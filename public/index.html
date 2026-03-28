@@ -69,20 +69,21 @@
     position: sticky; top: 0; z-index: 100;
   }
   .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; letter-spacing: 0.04em;
-    text-decoration: none; color: var(--black);
+    display: flex; align-items: center;
+    text-decoration: none;
   }
-  .logo span { color: var(--orange); }
+  .logo img {
+    height: 32px; width: auto;
+  }
   .header-cta {
     font-size: 12px; font-weight: 600;
     letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--orange); text-decoration: none;
-    border: 1px solid var(--orange);
-    padding: 8px 16px; border-radius: 2px;
-    transition: all 0.15s;
+    color: white; text-decoration: none;
+    background: var(--orange);
+    padding: 9px 18px; border-radius: 2px;
+    transition: opacity 0.15s; white-space: nowrap;
   }
-  .header-cta:hover { background: var(--orange); color: white; }
+  .header-cta:hover { opacity: 0.85; }
 
   /* ── HERO ── */
   .hero {
@@ -102,8 +103,8 @@
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 62px);
-    line-height: 1.08; font-weight: 900;
+    font-size: clamp(26px, 6vw, 62px);
+    line-height: 1.12; font-weight: 900;
     margin-bottom: 20px; letter-spacing: -0.02em;
   }
   .hero h1 em { color: var(--orange); font-style: normal; }
@@ -445,8 +446,9 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    header { padding: 16px 20px; }
-    .header-cta { display: none; }
+    header { padding: 14px 20px; }
+    .header-cta { font-size: 11px; padding: 8px 12px; }
+    .logo img { height: 26px; }
     .hero { padding: 50px 20px 36px; }
     .hero-proof { gap: 16px; }
     .app-section { padding: 40px 16px; }
@@ -496,7 +498,9 @@
 
 <!-- HEADER -->
 <header>
-  <a href="https://kartia.es" class="logo">Kartia <span>·</span> Escandallos</a>
+  <a href="https://kartia.es" class="logo">
+    <img src="https://kartia.es/wp-content/uploads/2020/09/logo-kartia-cartas-restaurantes1--scaled.png" alt="Kartia portamenús">
+  </a>
   <a href="https://kartia.es" class="header-cta" target="_blank">Ver portamenús →</a>
 </header>
 
