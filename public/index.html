@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +11,7 @@
 <meta name="keywords" content="calculadora escandallo, escandallo restaurante, calcular food cost, escandallo cocina, coste plato restaurante, food cost hostelería">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://escandallo.kartia.es">
-<meta name="google-site-verification" content="7gcd7Za9VdgWriu-mxJw-DraLrb4Cloj-KGuGZI9VkY" />
+
 <!-- Open Graph -->
 <meta property="og:title" content="Calculadora de Escandallo Gratuita para Restaurantes">
 <meta property="og:description" content="Descubre si tus platos ganan o pierden dinero. Herramienta gratuita de escandallo para cocinas profesionales.">
@@ -445,16 +446,49 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     header { padding: 16px 20px; }
-    .hero { padding: 60px 20px 48px; }
-    .app { grid-template-columns: 1fr; }
+    .header-cta { display: none; }
+    .hero { padding: 50px 20px 36px; }
+    .hero-proof { gap: 16px; }
+    .app-section { padding: 40px 16px; }
+    .app { grid-template-columns: 1fr; gap: 16px; }
     .result-panel { position: static; }
-    .two-col { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; gap: 12px; }
     .steps { grid-template-columns: 1fr; gap: 24px; }
-    .how-section, .seo-section, .faq-section, .final-cta { padding: 60px 20px; }
+    .how-section, .faq-section, .final-cta { padding: 52px 20px; }
+    .seo-section { padding: 52px 20px; }
     footer { padding: 20px; flex-direction: column; text-align: center; }
-    .ing-header, .ing-row {
-      grid-template-columns: 1.5fr 70px 80px 64px 28px;
+    .card { padding: 18px; }
+    .result-card { padding: 20px; }
+
+    /* Tabla ingredientes en móvil: 2 filas por ingrediente */
+    .ing-header { display: none; }
+    .ing-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0;
     }
+    .ing-row > input[placeholder="Ingrediente"] {
+      grid-column: 1 / 3;
+    }
+    .ing-row > button.btn-remove {
+      grid-column: 2;
+      justify-self: end;
+    }
+
+    /* Merma */
+    .merma-section { flex-wrap: wrap; gap: 10px; }
+    .merma-section input { margin-left: 0; }
+
+    /* PVP */
+    .pvp-row { flex-wrap: wrap; }
+    .pvp-row input { width: 100%; }
+
+    /* Métricas */
+    .metric-value.big { font-size: 28px; }
+    .faq-q { font-size: 14px; }
   }
 </style>
 </head>
