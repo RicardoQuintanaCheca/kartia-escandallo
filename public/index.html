@@ -3,66 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Escandallos — Kartia</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- SEO -->
+<title>Calculadora de Escandallo Gratuita para Restaurantes | Kartia</title>
+<meta name="description" content="Calcula el coste real de cada plato en segundos. Escandallo gratuito online para restaurantes y hostelería. Sin Excel, sin complicaciones.">
+<meta name="keywords" content="calculadora escandallo, escandallo restaurante, calcular food cost, escandallo cocina, coste plato restaurante, food cost hostelería">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://escandallo.kartia.es">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Calculadora de Escandallo Gratuita para Restaurantes">
+<meta property="og:description" content="Descubre si tus platos ganan o pierden dinero. Herramienta gratuita de escandallo para cocinas profesionales.">
+<meta property="og:url" content="https://escandallo.kartia.es">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Escandallo — Kartia",
+  "description": "Herramienta gratuita para calcular el escandallo y food cost de platos de restaurante",
+  "url": "https://escandallo.kartia.es",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "provider": { "@type": "Organization", "name": "Kartia", "url": "https://kartia.es" }
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --black: #0e0e0e;
     --white: #faf9f7;
     --orange: #e8601c;
     --orange-dim: rgba(232,96,28,0.10);
+    --orange-light: rgba(232,96,28,0.06);
     --gray: #6b6560;
+    --gray-light: #f0efed;
     --line: rgba(14,14,14,0.09);
     --card: #ffffff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--white);
     color: var(--black);
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* HEADER */
+  /* ── HEADER ── */
   header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 18px 48px;
     border-bottom: 1px solid var(--line);
     background: var(--white);
-    position: sticky; top: 0; z-index: 10;
+    position: sticky; top: 0; z-index: 100;
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 22px; letter-spacing: 0.04em; }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; letter-spacing: 0.04em;
+    text-decoration: none; color: var(--black);
+  }
   .logo span { color: var(--orange); }
-  .badge {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--orange);
-    border: 1px solid var(--orange); padding: 4px 10px; border-radius: 2px;
+  .header-cta {
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--orange); text-decoration: none;
+    border: 1px solid var(--orange);
+    padding: 8px 16px; border-radius: 2px;
+    transition: all 0.15s;
   }
+  .header-cta:hover { background: var(--orange); color: white; }
 
-  /* HERO */
+  /* ── HERO ── */
   .hero {
-    text-align: center; padding: 56px 40px 36px;
-    max-width: 640px; margin: 0 auto;
+    padding: 90px 48px 70px;
+    max-width: 800px; margin: 0 auto;
+    text-align: center;
   }
-  .hero-tag {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--gray); margin-bottom: 14px;
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 24px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--orange);
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 44px);
-    line-height: 1.15; margin-bottom: 12px;
+    font-size: clamp(36px, 6vw, 62px);
+    line-height: 1.08; font-weight: 900;
+    margin-bottom: 20px; letter-spacing: -0.02em;
   }
   .hero h1 em { color: var(--orange); font-style: normal; }
-  .hero p { font-size: 15px; color: var(--gray); line-height: 1.6; }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--gray); line-height: 1.6;
+    max-width: 600px; margin: 0 auto 36px;
+  }
+  .hero-proof {
+    display: flex; justify-content: center;
+    align-items: center; gap: 32px;
+    flex-wrap: wrap;
+  }
+  .proof-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--gray);
+  }
+  .proof-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--orange); flex-shrink: 0;
+  }
+  .hero-arrow {
+    display: block; margin: 40px auto 0;
+    font-size: 22px; color: var(--orange);
+    animation: bounce 1.8s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
 
-  /* LAYOUT */
+  /* ── APP ── */
+  .app-section {
+    background: var(--gray-light);
+    padding: 60px 24px;
+  }
   .app {
-    max-width: 940px; margin: 0 auto;
-    padding: 0 24px 80px;
+    max-width: 960px; margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 320px;
     gap: 28px; align-items: start;
@@ -74,9 +152,9 @@
   }
   .card {
     background: var(--card); border: 1px solid var(--line);
-    border-radius: 4px; padding: 24px; margin-bottom: 18px;
+    border-radius: 6px; padding: 24px; margin-bottom: 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
-
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
   label {
@@ -86,14 +164,13 @@
   }
   input[type="text"], input[type="number"], select {
     width: 100%; padding: 10px 12px;
-    border: 1px solid var(--line); border-radius: 3px;
+    border: 1px solid var(--line); border-radius: 4px;
     font-family: 'DM Sans', sans-serif; font-size: 14px;
     background: var(--white); color: var(--black);
     outline: none; transition: border-color 0.15s;
   }
   input:focus, select:focus { border-color: var(--orange); }
 
-  /* TABLA INGREDIENTES */
   .ing-header {
     display: grid;
     grid-template-columns: 2fr 90px 100px 80px 32px;
@@ -105,15 +182,10 @@
     letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray);
   }
   .ing-header span.right { text-align: right; }
-
   .ing-row {
     display: grid;
     grid-template-columns: 2fr 90px 100px 80px 32px;
     gap: 8px; align-items: center; margin-bottom: 6px;
-  }
-  .ing-cost {
-    font-size: 13px; font-weight: 600;
-    color: var(--black); text-align: right; padding-right: 4px;
   }
   .btn-remove {
     background: none; border: none; cursor: pointer;
@@ -121,16 +193,14 @@
     padding: 2px 4px; border-radius: 2px; transition: color 0.15s;
   }
   .btn-remove:hover { color: #c0392b; }
-
   .btn-add {
     background: none; border: 1px dashed rgba(14,14,14,0.15);
     color: var(--gray); font-family: 'DM Sans', sans-serif;
-    font-size: 13px; padding: 9px 16px; border-radius: 3px;
+    font-size: 13px; padding: 9px 16px; border-radius: 4px;
     cursor: pointer; width: 100%; margin-top: 10px; transition: all 0.15s;
   }
   .btn-add:hover { border-color: var(--orange); color: var(--orange); }
 
-  /* MERMA */
   .merma-section {
     display: flex; align-items: center;
     justify-content: space-between;
@@ -144,11 +214,11 @@
 
   /* PANEL RESULTADO */
   .result-panel { position: sticky; top: 76px; }
-
   .result-card {
     background: var(--card); color: var(--black);
-    border-radius: 4px; padding: 28px;
+    border-radius: 6px; padding: 28px;
     border: 1px solid var(--line);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
   .result-card .section-label { color: var(--gray); margin-bottom: 6px; }
   .result-dish {
@@ -156,7 +226,6 @@
     font-size: 17px; margin-bottom: 26px;
     min-height: 24px; color: var(--black);
   }
-
   .metric {
     display: flex; justify-content: space-between;
     align-items: baseline; padding: 11px 0;
@@ -167,11 +236,9 @@
   .metric-value { font-size: 18px; font-weight: 600; color: var(--black); }
   .metric-value.orange { color: var(--orange); }
   .metric-value.big {
-    font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700;
-    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-size: 34px; font-weight: 700; color: var(--orange);
   }
-
-  /* Barra food cost */
   .fc-wrap { margin: 20px 0 4px; }
   .fc-labels {
     display: flex; justify-content: space-between;
@@ -185,8 +252,6 @@
     height: 100%; border-radius: 3px;
     transition: width 0.35s ease, background 0.35s ease;
   }
-
-  /* PVP input */
   .pvp-row {
     display: flex; align-items: center; gap: 12px;
     margin-top: 18px; padding-top: 18px;
@@ -194,30 +259,25 @@
   }
   .pvp-row label { color: var(--gray); font-size: 11px; margin: 0; white-space: nowrap; }
   .pvp-row input {
-    background: var(--white);
-    border: 1px solid var(--line);
+    background: var(--white); border: 1px solid var(--line);
     color: var(--black); font-size: 16px; font-weight: 600;
-    padding: 8px 12px; width: 110px; text-align: right;
-    border-radius: 3px;
+    padding: 8px 12px; width: 110px; text-align: right; border-radius: 4px;
   }
   .pvp-row input:focus { border-color: var(--orange); outline: none; }
   .pvp-suffix { font-size: 13px; color: var(--gray); }
-
-  /* Alerta */
   .alert {
     margin-top: 14px; padding: 10px 13px;
-    border-radius: 3px; font-size: 12px;
+    border-radius: 4px; font-size: 12px;
     font-weight: 500; line-height: 1.4; display: none;
   }
-  .alert.danger  { background: rgba(192,57,43,0.08);  color: #a93226; border: 1px solid rgba(192,57,43,0.2); display: block; }
+  .alert.danger  { background: rgba(192,57,43,0.08); color: #a93226; border: 1px solid rgba(192,57,43,0.2); display: block; }
   .alert.warning { background: rgba(243,156,18,0.10); color: #9a6c00; border: 1px solid rgba(243,156,18,0.25); display: block; }
-  .alert.ok      { background: rgba(39,174,96,0.08);  color: #1e7a4a; border: 1px solid rgba(39,174,96,0.2); display: block; }
+  .alert.ok      { background: rgba(39,174,96,0.08); color: #1e7a4a; border: 1px solid rgba(39,174,96,0.2); display: block; }
 
-  /* CTA */
   .cta-box {
     background: var(--orange-dim);
     border: 1px solid rgba(232,96,28,0.2);
-    border-radius: 4px; padding: 20px;
+    border-radius: 6px; padding: 20px;
     margin-top: 16px; text-align: center;
   }
   .cta-box p {
@@ -231,17 +291,167 @@
     width: 100%; font-family: 'DM Sans', sans-serif;
     font-size: 13px; font-weight: 600;
     letter-spacing: 0.06em; text-transform: uppercase;
-    border-radius: 3px; cursor: pointer;
+    border-radius: 4px; cursor: pointer;
     transition: opacity 0.15s; text-decoration: none;
   }
   .btn-cta:hover { opacity: 0.85; }
 
-  @media (max-width: 680px) {
+  /* ── COMO FUNCIONA ── */
+  .how-section {
+    padding: 80px 48px;
+    max-width: 960px; margin: 0 auto;
+  }
+  .how-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    text-align: center; margin-bottom: 12px;
+  }
+  .how-section h2 em { color: var(--orange); font-style: normal; }
+  .how-intro {
+    text-align: center; color: var(--gray);
+    font-size: 16px; line-height: 1.6;
+    max-width: 560px; margin: 0 auto 56px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .step { text-align: center; }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 900;
+    color: var(--orange); opacity: 0.25;
+    line-height: 1; margin-bottom: 12px;
+  }
+  .step h3 {
+    font-size: 16px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .step p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+  /* ── SEO TEXT ── */
+  .seo-section {
+    background: var(--gray-light);
+    padding: 80px 48px;
+  }
+  .seo-inner {
+    max-width: 760px; margin: 0 auto;
+  }
+  .seo-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 34px);
+    margin-bottom: 20px; line-height: 1.2;
+  }
+  .seo-inner h2 em { color: var(--orange); font-style: normal; }
+  .seo-inner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; margin: 36px 0 12px;
+  }
+  .seo-inner p {
+    font-size: 15px; color: var(--gray);
+    line-height: 1.75; margin-bottom: 16px;
+  }
+  .seo-inner strong { color: var(--black); font-weight: 600; }
+  .seo-inner ul {
+    margin: 12px 0 20px 0; padding-left: 0;
+    list-style: none;
+  }
+  .seo-inner ul li {
+    font-size: 15px; color: var(--gray);
+    line-height: 1.7; padding-left: 20px;
+    position: relative; margin-bottom: 6px;
+  }
+  .seo-inner ul li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--orange); font-size: 13px;
+  }
+
+  /* ── FAQ ── */
+  .faq-section {
+    padding: 80px 48px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .faq-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 34px);
+    margin-bottom: 40px; text-align: center;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 20px 0;
+  }
+  .faq-q {
+    font-size: 16px; font-weight: 600;
+    margin-bottom: 10px; cursor: pointer;
+    display: flex; justify-content: space-between;
+    align-items: center;
+  }
+  .faq-q span { color: var(--orange); font-size: 20px; }
+  .faq-a {
+    font-size: 14px; color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: var(--black);
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 42px);
+    color: white; margin-bottom: 16px; line-height: 1.2;
+  }
+  .final-cta h2 em { color: var(--orange); font-style: normal; }
+  .final-cta p {
+    font-size: 16px; color: rgba(255,255,255,0.55);
+    margin-bottom: 36px; line-height: 1.6;
+  }
+  .btn-final {
+    display: inline-block;
+    background: var(--orange); color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 16px 36px; border-radius: 4px;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .btn-final:hover { opacity: 0.85; }
+  .final-sub {
+    margin-top: 16px;
+    font-size: 12px; color: rgba(255,255,255,0.3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 28px 48px;
+    border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; color: var(--black); text-decoration: none;
+  }
+  .footer-logo span { color: var(--orange); }
+  footer p {
+    font-size: 12px; color: var(--gray);
+  }
+  footer a { color: var(--orange); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    header { padding: 16px 20px; }
+    .hero { padding: 60px 20px 48px; }
     .app { grid-template-columns: 1fr; }
     .result-panel { position: static; }
     .two-col { grid-template-columns: 1fr; }
-    header { padding: 16px 20px; }
-    .hero { padding: 36px 20px 24px; }
+    .steps { grid-template-columns: 1fr; gap: 24px; }
+    .how-section, .seo-section, .faq-section, .final-cta { padding: 60px 20px; }
+    footer { padding: 20px; flex-direction: column; text-align: center; }
     .ing-header, .ing-row {
       grid-template-columns: 1.5fr 70px 80px 64px 28px;
     }
@@ -250,117 +460,235 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <div class="logo">Kartia <span>·</span> Escandallos</div>
-  <div class="badge">Gratis</div>
+  <a href="https://kartia.es" class="logo">Kartia <span>·</span> Escandallos</a>
+  <a href="https://kartia.es" class="header-cta" target="_blank">Ver portamenús →</a>
 </header>
 
-<div class="hero">
-  <span class="hero-tag">Para cocinas profesionales</span>
-  <h1>¿Cuánto te cuesta<br>realmente cada <em>plato</em>?</h1>
-  <p>Añade los ingredientes, las cantidades y el precio de venta.<br>El resto lo calculamos nosotros.</p>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Herramienta gratuita para hostelería</div>
+  <h1>¿Sabes cuánto ganas<br>realmente con cada <em>plato</em>?</h1>
+  <p class="hero-sub">La mayoría de restaurantes trabajan a ciegas. Calculan por intuición. Y pierden dinero sin saberlo. Esta herramienta te dice la verdad en segundos.</p>
+  <div class="hero-proof">
+    <div class="proof-item"><div class="proof-dot"></div>Sin registro</div>
+    <div class="proof-item"><div class="proof-dot"></div>Sin Excel</div>
+    <div class="proof-item"><div class="proof-dot"></div>100% gratuito</div>
+    <div class="proof-item"><div class="proof-dot"></div>Resultado inmediato</div>
+  </div>
+  <a href="#calculadora" class="hero-arrow">↓</a>
+</section>
 
-<div class="app">
+<!-- CALCULADORA -->
+<section class="app-section" id="calculadora">
+  <div class="app">
 
-  <!-- IZQUIERDA -->
-  <div>
-
-    <div class="card">
-      <div class="section-label">Datos del plato</div>
-      <div class="two-col">
-        <div>
-          <label>Nombre del plato</label>
-          <input type="text" id="dish-name" placeholder="Ej: Risotto de trufa">
+    <!-- IZQUIERDA -->
+    <div>
+      <div class="card">
+        <div class="section-label">Datos del plato</div>
+        <div class="two-col">
+          <div>
+            <label>Nombre del plato</label>
+            <input type="text" id="dish-name" placeholder="Ej: Risotto de trufa">
+          </div>
+          <div>
+            <label>Nº de raciones</label>
+            <input type="number" id="portions" value="4" min="1" max="100">
+          </div>
         </div>
-        <div>
-          <label>Nº de raciones</label>
-          <input type="number" id="portions" value="4" min="1" max="100">
+      </div>
+
+      <div class="card">
+        <div class="section-label">Ingredientes</div>
+        <div class="ing-header">
+          <span>Ingrediente</span>
+          <span>Cantidad</span>
+          <span>Unidad</span>
+          <span class="right">Precio / ud</span>
+          <span></span>
+        </div>
+        <div id="ingredients-list"></div>
+        <button class="btn-add" onclick="addIngredient()">+ Añadir ingrediente</button>
+        <div class="merma-section">
+          <div class="merma-info">
+            <label>Merma estimada</label>
+            <small>Pérdida por limpieza, cocción o evaporación</small>
+          </div>
+          <input type="number" id="merma" value="10" min="0" max="80">
+          <span style="font-size:13px;color:var(--gray);margin-left:4px">%</span>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <div class="section-label">Ingredientes</div>
-
-      <div class="ing-header">
-        <span>Ingrediente</span>
-        <span>Cantidad</span>
-        <span>Unidad</span>
-        <span class="right">Precio / ud</span>
-        <span></span>
+    <!-- DERECHA -->
+    <div class="result-panel">
+      <div class="result-card">
+        <div class="section-label">Escandallo</div>
+        <div class="result-dish" id="result-name">—</div>
+        <div class="metric">
+          <span class="metric-label">Coste ingredientes / ración</span>
+          <span class="metric-value" id="r-raw">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Coste con merma (<span id="r-merma-pct">10</span>%)</span>
+          <span class="metric-value orange" id="r-with-merma">—</span>
+        </div>
+        <div class="pvp-row">
+          <label>PVP en carta</label>
+          <input type="number" id="pvp" value="18" step="0.5" min="0">
+          <span class="pvp-suffix">€</span>
+        </div>
+        <div class="fc-wrap">
+          <div class="fc-labels">
+            <span>Food cost %</span>
+            <span id="r-fc-pct">—</span>
+          </div>
+          <div class="fc-bar">
+            <div class="fc-fill" id="r-bar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="metric" style="margin-top:8px">
+          <span class="metric-label">Margen bruto / ración</span>
+          <span class="metric-value big" id="r-margin">—</span>
+        </div>
+        <div class="alert" id="r-alert"></div>
       </div>
 
-      <div id="ingredients-list"></div>
-
-      <button class="btn-add" onclick="addIngredient()">+ Añadir ingrediente</button>
-
-      <div class="merma-section">
-        <div class="merma-info">
-          <label>Merma estimada</label>
-          <small>Pérdida por limpieza, cocción o evaporación</small>
-        </div>
-        <input type="number" id="merma" value="10" min="0" max="80"> <span style="font-size:13px;color:var(--gray);margin-left:4px">%</span>
+      <div class="cta-box">
+        <p>¿Tus cartas están a la altura de tu cocina?<br><strong>Portamenús artesanales Kartia</strong>, fabricados a medida para restaurantes exigentes.</p>
+        <a class="btn-cta" href="https://kartia.es" target="_blank">Ver catálogo →</a>
       </div>
     </div>
 
   </div>
+</section>
 
-  <!-- DERECHA -->
-  <div class="result-panel">
-    <div class="result-card">
-      <div class="section-label">Escandallo</div>
-      <div class="result-dish" id="result-name">—</div>
-
-      <div class="metric">
-        <span class="metric-label">Coste ingredientes / ración</span>
-        <span class="metric-value" id="r-raw">—</span>
-      </div>
-      <div class="metric">
-        <span class="metric-label">Coste con merma (<span id="r-merma-pct">10</span>%)</span>
-        <span class="metric-value orange" id="r-with-merma">—</span>
-      </div>
-
-      <div class="pvp-row">
-        <label>PVP en carta</label>
-        <input type="number" id="pvp" value="18" step="0.5" min="0">
-        <span class="pvp-suffix">€</span>
-      </div>
-
-      <div class="fc-wrap">
-        <div class="fc-labels">
-          <span>Food cost %</span>
-          <span id="r-fc-pct">—</span>
-        </div>
-        <div class="fc-bar">
-          <div class="fc-fill" id="r-bar" style="width:0%"></div>
-        </div>
-      </div>
-
-      <div class="metric" style="margin-top:8px">
-        <span class="metric-label">Margen bruto / ración</span>
-        <span class="metric-value big" id="r-margin">—</span>
-      </div>
-
-      <div class="alert" id="r-alert"></div>
+<!-- CÓMO FUNCIONA -->
+<section class="how-section">
+  <h2>Tres datos.<br><em>Una respuesta clara.</em></h2>
+  <p class="how-intro">No necesitas ser contable. Solo saber lo que pagas por los ingredientes. El resto lo hace la calculadora.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Añade los ingredientes</h3>
+      <p>Nombre, cantidad y lo que te cobra el proveedor por kilo, litro o unidad. Nada más.</p>
     </div>
-
-    <div class="cta-box">
-      <p>¿Tus cartas están a la altura de tu cocina?<br><strong>Portamenús artesanales Kartia</strong>, fabricados a medida para restaurantes exigentes.</p>
-      <a class="btn-cta" href="https://kartia.es" target="_blank">Ver catálogo →</a>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Indica la merma</h3>
+      <p>El porcentaje que se pierde por limpieza o cocción. Si no lo sabes, el 10% es un buen punto de partida.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Pon el precio de carta</h3>
+      <p>Lo que cobras al cliente. La calculadora te dice al instante si ese plato te da dinero o te lo quita.</p>
     </div>
   </div>
+</section>
 
-</div>
+<!-- TEXTO SEO -->
+<section class="seo-section">
+  <div class="seo-inner">
+
+    <h2>Qué es un escandallo<br>y por qué <em>lo necesitas</em></h2>
+
+    <p>Un escandallo es el desglose detallado del coste de un plato. Ingrediente a ingrediente, cantidad a cantidad. Es la diferencia entre saber lo que ganas y creer que lo sabes.</p>
+
+    <p>La mayoría de restaurantes no hacen escandallos. Ponen precios mirando a la competencia, tirando de experiencia o a ojo. Y con eso van sobreviviendo. Hasta que suben los precios del proveedor, cambia la temporada o simplemente se dan cuenta de que llevan meses llenando el local y perdiendo dinero.</p>
+
+    <p><strong>El escandallo no es burocracia. Es control.</strong></p>
+
+    <h3>¿Qué es el food cost y cuál debería ser el tuyo?</h3>
+
+    <p>El food cost es el porcentaje que representa el coste de los ingredientes sobre el precio de venta. Si un plato te cuesta 4€ en materias primas y lo vendes a 16€, tu food cost es del 25%.</p>
+
+    <p>Los rangos de referencia del sector:</p>
+    <ul>
+      <li><strong>Por debajo del 28%</strong> — margen excelente</li>
+      <li><strong>28% - 32%</strong> — margen saludable, zona cómoda</li>
+      <li><strong>32% - 40%</strong> — margen justo, vigila ese plato</li>
+      <li><strong>Por encima del 40%</strong> — problema. O sube el precio o cambia la receta</li>
+    </ul>
+
+    <p>Estos porcentajes varían según el tipo de negocio. Un restaurante de menú del día puede aguantar food costs más altos porque rota mucho. Un restaurante de cocina de autor necesita controlarlo más, porque el ticket es alto pero también lo son los ingredientes.</p>
+
+    <h3>La merma: el coste invisible que nadie calcula</h3>
+
+    <p>La merma es lo que se pierde antes de que el plato llegue al cliente. La cabeza del gambón que tiras. El agua que pierde la carne al cocinar. Las hojas exteriores de la lechuga que van a la basura.</p>
+
+    <p>Si compras 1 kg de lubina a 18€ pero solo aprovechas 650 gramos, el coste real no es 18€/kg sino 27,7€/kg. Ignorar la merma es uno de los errores más comunes en hostelería.</p>
+
+    <p>Nuestra calculadora aplica la merma de forma automática sobre el total de ingredientes. Tú decides el porcentaje según tu tipo de cocina.</p>
+
+    <h3>¿Cuándo revisar tus escandallos?</h3>
+    <ul>
+      <li>Cada vez que cambie el precio de un proveedor importante</li>
+      <li>Al hacer un cambio de temporada en la carta</li>
+      <li>Cuando introduzcas un plato nuevo</li>
+      <li>Si detectas que un plato "que siempre funciona" ya no es tan rentable</li>
+      <li>Al menos una vez al trimestre como revisión general</li>
+    </ul>
+
+    <p>Un escandallo no es para hacerlo una vez y olvidarlo. Es una herramienta viva que evoluciona con tu negocio.</p>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2>Preguntas frecuentes</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">¿Es realmente gratuita esta calculadora? <span>+</span></div>
+    <div class="faq-a">Sí, completamente. Sin registro, sin tarjeta, sin letra pequeña. La ofrecemos desde Kartia como herramienta de valor para el sector de la hostelería.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">¿Los datos que introduzco se guardan? <span>+</span></div>
+    <div class="faq-a">No. Todo funciona en tu navegador. No guardamos ningún dato, no tienes cuenta, y si cierras la pestaña la información desaparece. Puedes usarla con total privacidad.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">¿Qué diferencia hay entre escandallo y food cost? <span>+</span></div>
+    <div class="faq-a">El escandallo es el desglose detallado de costes de un plato. El food cost es el porcentaje que esos costes representan sobre el precio de venta. Esta calculadora hace los dos: te muestra el escandallo y calcula automáticamente el food cost resultante.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">¿Puedo calcular el escandallo de un menú completo? <span>+</span></div>
+    <div class="faq-a">Por ahora la calculadora funciona plato a plato. Para calcular el coste de un menú completo, haz el escandallo de cada plato por separado y suma los costes totales.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">¿Qué porcentaje de merma debo aplicar? <span>+</span></div>
+    <div class="faq-a">Depende del tipo de ingrediente y preparación. Como referencia: verduras y hortalizas 20-30%, carnes 15-25%, pescados 40-50%, lácteos y secos menos del 5%. Si no sabes, empieza con un 10-15% como estimación conservadora.</div>
+  </div>
+
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Tu cocina merece una carta<br><em>que la represente.</em></h2>
+  <p>Fabricamos portamenús artesanales para restaurantes que cuidan cada detalle.<br>Desde la receta hasta la presentación.</p>
+  <a href="https://kartia.es" class="btn-final" target="_blank">Descubrir Kartia →</a>
+  <p class="final-sub">Fabricación artesanal · Madrid · Envío a toda España</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://kartia.es" class="footer-logo">Kartia <span>·</span> Portamenús</a>
+  <p>Herramienta gratuita para hostelería. <a href="https://kartia.es">kartia.es</a></p>
+</footer>
 
 <script>
 const UNITS = ['kg','g','l','ml','ud','ración','bote','lata','sobre'];
 
 let ingredients = [
-  { name: 'Bogavante',    qty: 0.3,  unit: 'kg', price: 32 },
-  { name: 'Arroz bomba',  qty: 0.08, unit: 'kg', price: 2.5 },
-  { name: 'Fumet',        qty: 0.25, unit: 'l',  price: 1.2 },
-  { name: 'Azafrán',      qty: 0.5,  unit: 'g',  price: 0.08 },
+  { name: 'Bogavante',   qty: 0.3,  unit: 'kg', price: 32 },
+  { name: 'Arroz bomba', qty: 0.08, unit: 'kg', price: 2.5 },
+  { name: 'Fumet',       qty: 0.25, unit: 'l',  price: 1.2 },
+  { name: 'Azafrán',     qty: 0.5,  unit: 'g',  price: 0.08 },
 ];
 
 function renderIngredients() {
@@ -368,7 +696,6 @@ function renderIngredients() {
   list.innerHTML = '';
   ingredients.forEach((ing, i) => {
     const unitOpts = UNITS.map(u => `<option${u === ing.unit ? ' selected' : ''}>${u}</option>`).join('');
-    const cost = ing.qty * ing.price;
     const row = document.createElement('div');
     row.className = 'ing-row';
     row.innerHTML = `
@@ -387,46 +714,38 @@ function renderIngredients() {
 
 function addIngredient() {
   ingredients.push({ name: '', qty: 0, unit: 'kg', price: 0 });
-  renderIngredients();
-  recalc();
+  renderIngredients(); recalc();
 }
-
 function removeIng(i) {
   ingredients.splice(i, 1);
-  renderIngredients();
-  recalc();
+  renderIngredients(); recalc();
 }
-
 function fmt(n) { return n.toFixed(2) + ' €'; }
 
 function recalc() {
   const portions = Math.max(1, +document.getElementById('portions').value || 1);
   const merma    = (+document.getElementById('merma').value || 0) / 100;
   const pvp      = +document.getElementById('pvp').value || 0;
+  const totalRaw  = ingredients.reduce((s, ing) => s + ing.qty * ing.price, 0);
+  const perRacion = totalRaw / portions;
+  const withMerma = perRacion * (1 + merma);
+  const margin    = pvp - withMerma;
+  const fcPct     = pvp > 0 ? (withMerma / pvp) * 100 : 0;
 
-  const totalRaw   = ingredients.reduce((s, ing) => s + ing.qty * ing.price, 0);
-  const perRacion  = totalRaw / portions;
-  const withMerma  = perRacion * (1 + merma);
-  const margin     = pvp - withMerma;
-  const fcPct      = pvp > 0 ? (withMerma / pvp) * 100 : 0;
-
-  document.getElementById('result-name').textContent =
-    document.getElementById('dish-name').value || '—';
-  document.getElementById('r-merma-pct').textContent =
-    document.getElementById('merma').value || '0';
-  document.getElementById('r-raw').textContent       = fmt(perRacion);
+  document.getElementById('result-name').textContent = document.getElementById('dish-name').value || '—';
+  document.getElementById('r-merma-pct').textContent = document.getElementById('merma').value || '0';
+  document.getElementById('r-raw').textContent        = fmt(perRacion);
   document.getElementById('r-with-merma').textContent = fmt(withMerma);
-  document.getElementById('r-margin').textContent    = pvp > 0 ? fmt(margin) : '—';
-  document.getElementById('r-fc-pct').textContent    = pvp > 0 ? fcPct.toFixed(1) + '%' : '—';
+  document.getElementById('r-margin').textContent     = pvp > 0 ? fmt(margin) : '—';
+  document.getElementById('r-fc-pct').textContent     = pvp > 0 ? fcPct.toFixed(1) + '%' : '—';
 
   const fill = document.getElementById('r-bar');
-  fill.style.width = pvp > 0 ? Math.min(100, fcPct) + '%' : '0%';
+  fill.style.width      = pvp > 0 ? Math.min(100, fcPct) + '%' : '0%';
   fill.style.background = fcPct > 40 ? '#c0392b' : fcPct > 30 ? '#e8a21c' : '#27ae60';
 
   const alert = document.getElementById('r-alert');
   if (!pvp) {
-    alert.className = 'alert';
-    alert.textContent = '';
+    alert.className = 'alert'; alert.textContent = '';
   } else if (fcPct > 40) {
     alert.className = 'alert danger';
     alert.textContent = `Food cost del ${fcPct.toFixed(1)}% — estás por encima del límite. Sube el precio o ajusta los ingredientes.`;
